@@ -18,15 +18,21 @@ description.to_excel('data/description.xlsx')
 print("Количество пустых значений")
 print(df.isnull().sum())
 # df = pd.get_dummies(df)
+df.fillna(0)
 print("Количество атрибутов {}  и наблюдений {} после замены категориальных на фиктивные".format(df.shape[1],df.shape[0]))
 print("Количество пустых значений после замены категориальных на фиктивные")
-# print(df.isnull().sum())
+print(df.isnull().sum())
 
 
-description_after_preprocessing = df.describe().to_excel('data/description_after_preprocessing.xlsx')
-
-df['contract_status'].value_counts().plot(kind='bar')
-plt.title("Поступили")
-print("%f подписали контракт " %(df.contract_status[df.contract_status == 1].count()/df.contract_status.count() * 100))
-corr = df.corr()
-corr.to_excel("data/correlation.xlsx")
+# description_after_preprocessing = df.describe().to_excel('data/description_after_preprocessing.xlsx')
+#
+# df['contract_status'].value_counts().plot(kind='bar')
+# plt.title("Поступили")
+# print("%f подписали контракт " %(df.contract_status[df.contract_status == 1].count()/df.contract_status.count() * 100))
+# corr = df.corr()
+# corr.to_excel("data/correlation.xlsx")
+#
+#
+# triangle = corr.abs().where(np.tril(np.ones(corr.shape), k=-1).astype(np.bool))
+# print("Самая сильная корреляция")
+# print(triangle.stack().sort_values(ascending=False)[:10])
